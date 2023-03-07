@@ -1,0 +1,157 @@
+import turtle
+import os
+
+ 
+
+wn = turtle.Screen()
+wn.title("NEW ROCKET LEAGUE")
+wn.bgcolor("black")
+wn.setup(width=1000, height=600)
+wn.tracer(0)
+
+
+# Score
+score_a = 0
+score_b = 0
+
+# Player A
+player_a = turtle.Turtle()
+player_a.speed(0)
+player_a.shape("square")
+player_a.color("orange")
+player_a.shapesize(stretch_wid=1,stretch_len=5)
+player_a.penup()
+player_a.goto(-300, -282)
+
+
+    
+# Player B
+player_b = turtle.Turtle()
+player_b.speed(0)
+player_b.shape("square")
+player_b.color("blue")
+player_b.shapesize(stretch_wid=1,stretch_len=5)
+player_b.penup()
+player_b.goto(300, -282)
+
+# Ball
+ball = turtle.Turtle()
+ball.speed(0)
+ball.shape("square")
+ball.color("white")
+ball.penup()
+ball.goto(0, -262)
+ball.shapesize(stretch_wid=3,stretch_len=3)
+ball.dx = 0.1
+ball.dy = 0.1
+
+# Pen
+pen = turtle.Turtle()
+pen.speed(0)
+pen.shape("square")
+pen.color("white")
+pen.penup()
+pen.hideturtle()
+pen.goto(0, 260)
+pen.write("Player A: 0  Player B: 0", align="center", font=("Courier", 24, "normal"))
+
+
+# Functions
+def player_a_up():
+    y = player_a.ycor()
+    y += 20
+    player_a.sety(y)
+
+def player_a_down():
+    y = player_a.ycor()
+    y += -20
+    player_a.sety(y)
+
+
+def player_a_left():
+    x = player_a.xcor()
+    x += -20
+    player_a.setx(x)
+
+
+def player_a_right():
+    x = player_a.xcor()
+    x += 20
+    player_a.setx(x)
+
+def player_b_up():
+    y = player_b.ycor()
+    y += 20
+    player_b.sety(y)
+
+def player_b_down():
+    y = player_b.ycor()
+    y += -20
+    player_b.sety(y)
+
+def player_b_left():
+    x = player_b.xcor()
+    x += -20
+    player_b.setx(x)
+
+def player_b_right():
+    x = player_b.xcor()
+    x += 20
+    player_b.setx(x)
+
+
+# Keyboard bindings
+wn.listen()
+wn.onkeypress(player_a_up, "w")
+wn.onkeypress(player_a_down, "s")
+wn.onkeypress(player_a_left, "a")
+wn.onkeypress(player_a_right, "d")
+wn.onkeypress(player_b_up, "Up")
+wn.onkeypress(player_b_down, "Down")
+wn.onkeypress(player_b_left, "Left")
+wn.onkeypress(player_b_right, "Right")
+ 
+ 
+ # Left and right
+if ball.xcor() > 1000:
+        score_a += 1
+        pen.clear()
+        pen.write("Player A: {}  Player B: {}".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))
+        ball.goto(0, 0)
+        ball.dx *= -1
+
+if ball.xcor() < -1000:
+        score_b += 1
+        pen.clear()
+        pen.write("Player A: {}  Player B: {}".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))
+        ball.goto(0, 0)
+        ball.dx *= -1
+
+# Top and bottom
+if ball.ycor() > 290:
+        ball.sety(290)
+        ball.dy *= 1
+
+elif ball.ycor() < -290:
+        ball.sety(-290)
+        ball.dy *= -1
+
+# Paddle and ball collisions
+if ball.xcor() < -340 and ball.ycor() < player_a.ycor() + 50 and ball.ycor() > player_a.ycor() - 50:
+    ball.dx *= -1 
+    os.system("afplay bounce.wav&")
+    
+if ball.xcor() > 340 and ball.ycor() < player_b.ycor() + 50 and ball.ycor() > player_b.ycor() - 50:
+    ball.dx *= -1
+    os.system("afplay bounce.wav&")
+    
+
+# Main game loop
+while True:
+    wn.update()
+    
+    # Move the ball
+    ball.setx(ball.xcor() + ball.dx)
+    ball.sety(ball.ycor() + ball.dy)
+
+
