@@ -1,8 +1,9 @@
-def factorial(n):
-    if n == 0:  # Base case: Termination condition
-        return 1
-    else:
-        return n * factorial(n - 1)
+first_name = "Damir"
+last_name = "Diedukhov"
 
-result = factorial(5)
-print(result)
+Fullname = f"{first_name}{last_name}"
+message = f"Hello, {Fullname.upper()}"
+message1 = f"Hello, {Fullname.lower()}"
+message2 = f"Hello, {Fullname.title()}"
+
+print(message + "\n" + message1 + "\n" + message2)
