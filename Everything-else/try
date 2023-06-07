@@ -139,3 +139,36 @@
 #cars.reverse() # .reverse just reverses the list.
 #print(cars)
 
+#cars = ['honda', 'bughatii', 'lamborghini', 'mercedize']
+#lenght = len(cars) len function gives you the lenght of a list.
+#print(lenght)
+
+#names = ["john", "peter", "smith"]
+
+#for name in names:  In this example, the for loop iterates over each item in the names list, and the variable name takes the value of each item in each iteration. The print(name) statement prints each name on a separate line. The in operator, when used with a for loop, checks if there are more items in the sequence to iterate over. It helps in controlling the flow of the loop and ensures that all items in the sequence are processed.
+    #print(name)
+
+#names = ["john", "peter", "smith"]
+
+#for name in names:
+    #print(f"{name.title()} come over here!!!")
+#print(f"Can you bey me that bike for my birthday {name.title()}")
+
+#for value in range(0, 1000000): In Python, the range() function is used to generate a sequence of numbers. It returns an object of the range type that represents a sequence of numbers.
+    #print(value)
+
+#numbers = list(range(1,1000)) In Python, the list() function is used to create a new list object. It takes an iterable as an argument and returns a list containing the elements of the iterable.
+#print(numbers)
+
+#even_numbers = list(range(2, 11, 2)) in ((2, 11, 2)) the first 2 adds up with another 2 till it comes to 11.
+#print(even_numbers)
+
+#squares = []
+#for value in range(1, 11):
+    #square = value ** 2
+    #squares.append(square)each new value of square is appended to the list
+
+#print(squares)
+
+digits = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+min(digits)
