@@ -9,7 +9,7 @@
 #print(M +"\n" + M1 + "\n" + M2) #"\n" makes a new clluom in the text 
 
 
-#print("'\t'python")  #In Python, \t represents the escape sequence for a horizontal tab character. When used within a string, \t is interpreted as a tab character and produces horizontal spacing.
+#print("'\t'python")  #In Python, \t represents the tab sequence for a horizontal tab character. When used within a string, \t is interpreted as a tab character and produces horizontal spacing.
 
 #text = "  Hello, World!  "
 
@@ -51,7 +51,7 @@
 #motorcycles[0] = 'toyota'
 #print(motorcycles)
 
-#motorcycles.append('honda') .append function puts something into or taken out bakc into the list
+#motorcycles.append('honda') #.append function puts something into or taken out bakc into the list
 #print(motorcycles)
 #print(motorcycles[0])
 
@@ -133,8 +133,9 @@
 #print(cars)
 
 
-cars = ['honda', 'bughatii', 'lamborghini', 'mercedize']
-print(cars)
+#cars = ['honda', 'bughatii', 'lamborghini', 'mercedize']
+#print(cars)
 
-cars.reverse()
-print(cars)
+#cars.reverse() # .reverse just reverses the list.
+#print(cars)
+
