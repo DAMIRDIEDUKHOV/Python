@@ -51,10 +51,75 @@
 #del allien['color']
 #print(allien)
 
-favorite_video_games = {
-    'damir': 'rocketlegue'
-    'yehor': 'it_takes_two'
-    'eleonora': 'call_of_duty'
-    'daddy': 'tanks_of_trouble'
-    'mommy': 'nothing'
+#favorite_video_games = {
+    #'damir': 'rocket legue',
+    #'yehor': 'it_takes_two',
+    #'eleonora': 'call_of_duty',
+    #'daddy': 'tanks_of_trouble',
+    #'mommy': 'nothing'
+    #}
+
+#games = favorite_video_games['damir'].title()
+#print(f"My favorite video game is {games}")
+
+
+#allien = {
+    #'color': 'green',
+    #'speed': 'meduim'
+    #}
+#point_value = allien.get('points', 'no_point_value_assigned') # In Python, the .get() method is a built-in method available for dictionary objects. It allows you to retrieve the value associated with a specified key from the dictionary.
+#print(point_value)
+
+#family = {
+    #'Damir': 'red',
+    #'Eleonora': 'purple',
+    #'Yehor': 'green',
+    #'Daddy': 'blue',
+    #'Mommy': 'rose',
+    #'family_color': '#803F56'
+#}
+
+#color = family['family_color']
+#print(f"The family color is {color},")
+#print("You can find the type in google.")
+
+#fortnite_loggin = {
+    #'username': 'the_iron-boy',
+    #'firstname': 'Damir',
+    #'lastname': 'Diedukhov',
+    #'fullname': 'Damir Diedukhov'
+    #}
+
+#for key, value in fortnite_loggin.items():
+    #print(f"\nKey: {key}") # key represents the username firstname aka
+    #print(f"Value: {value}") # value represents the names given to the key.
+
+
+
+#favorite_lang = {
+    #'damir': 'python',
+    #'yehor': 'scratch',
+    #'eleonora': 'c++',
+    #'daddy': 'ruby',
+    #'mommy': 'java'
+#}
+
+#for name in favorite_lang.keys(): #In Python, the .keys() method is used to retrieve a view object that contains the keys of a dictionary. 
+    #print(f"{name.title()}'s favorite language is {lang.title()}.")
+    #print(name.title())
+
+favorite_lang = {
+    'damir': 'python',
+    'yehor': 'scratch',
+    'eleonora': 'c++',
+    'daddy': 'ruby',
+    'mommy': 'java'
     }
+
+friends = ['damir']
+for name in favorite_lang.keys():
+    print(f"Hi {name.title()}")
+
+if name in friends:
+    language = favorite_lang[name].title()
+    print(f"\t{name.title()}, I see you love {language}.")   

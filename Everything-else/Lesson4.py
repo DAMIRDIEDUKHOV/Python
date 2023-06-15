@@ -35,7 +35,7 @@
 #print(max(digits)) # the max function prints the largest number in the list.
 
 #players = ['hilo', 'jupiter', 'hank', 'cricket', 'eli']
-#print(players[1:]) # the 1: prints everything after the first list name and not the first list name.
+#print(players[1:3:2]) # the 1: prints everything after the first list name and not the first list name.
 
 #players = ['hilo', 'jupiter', 'hank', 'cricket', 'eli']
 #print(players[-3:])
