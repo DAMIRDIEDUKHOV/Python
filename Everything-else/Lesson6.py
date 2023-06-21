@@ -108,6 +108,22 @@
     #print(f"{name.title()}'s favorite language is {lang.title()}.")
     #print(name.title())
 
+#favorite_lang = {
+    #'damir': 'python',
+    #'yehor': 'scratch',
+    #'eleonora': 'c++',
+    #'daddy': 'ruby',
+    #'mommy': 'java'
+    #}
+
+#friends = ['damir']
+#for name in favorite_lang.keys():
+    #print(f"Hi {name.title()}")
+
+    #if name in friends:
+        #language = favorite_lang[name].title()
+        #print(f"\t{name.title()}, I see you love {language}.")   
+
 favorite_lang = {
     'damir': 'python',
     'yehor': 'scratch',
@@ -116,10 +132,10 @@ favorite_lang = {
     'mommy': 'java'
     }
 
-friends = ['damir']
-for name in favorite_lang.keys():
-    print(f"Hi {name.title()}")
 
-if name in friends:
-    language = favorite_lang[name].title()
-    print(f"\t{name.title()}, I see you love {language}.")   
+for name in sorted(favorite_lang.keys()):
+    print(f"{name.title()}, thank you for programming.")
+
+if 'brother' not in favorite_lang.keys():
+    print("and brother please start coding more.!!")
+
