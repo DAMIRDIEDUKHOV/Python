@@ -29,11 +29,17 @@ paddle_a_velocity = 0
 paddle_b_velocity = 0
 PADDLE_VELOCITY = 5
 
-# Ball position and velocities
+# Ball positions and velocities
 ball_x = WINDOW_WIDTH // 2
 ball_y = WINDOW_HEIGHT // 2
 ball_velocity_x = -3
 ball_velocity_y = -3
+
+# Second ball positions and velocities
+ball2_x = WINDOW_WIDTH // 2
+ball2_y = WINDOW_HEIGHT // 2
+ball2_velocity_x = 3  # Opposite direction compared to the first ball
+ball2_velocity_y = 3  # Opposite direction compared to the first ball
 
 # Score
 score_a = 0
@@ -69,21 +75,35 @@ while running:
     paddle_a_y = max(0, min(WINDOW_HEIGHT - PADDLE_HEIGHT, paddle_a_y))
     paddle_b_y = max(0, min(WINDOW_HEIGHT - PADDLE_HEIGHT, paddle_b_y))
 
-    # Move the ball
+    # Move the first ball
     ball_x += ball_velocity_x
     ball_y += ball_velocity_y
 
-    # Ball collisions with walls
+    # Move the second ball
+    ball2_x += ball2_velocity_x
+    ball2_y += ball2_velocity_y
+
+    # Ball collisions with walls for the first ball
     if ball_y - BALL_RADIUS <= 0 or ball_y + BALL_RADIUS >= WINDOW_HEIGHT:
         ball_velocity_y *= -1
 
-    # Ball collisions with paddles
+    # Ball collisions with walls for the second ball
+    if ball2_y - BALL_RADIUS <= 0 or ball2_y + BALL_RADIUS >= WINDOW_HEIGHT:
+        ball2_velocity_y *= -1
+
+    # Ball collisions with paddles for the first ball
     if ball_x - BALL_RADIUS <= PADDLE_WIDTH and paddle_a_y <= ball_y <= paddle_a_y + PADDLE_HEIGHT:
         ball_velocity_x *= -1
     elif ball_x + BALL_RADIUS >= WINDOW_WIDTH - PADDLE_WIDTH and paddle_b_y <= ball_y <= paddle_b_y + PADDLE_HEIGHT:
         ball_velocity_x *= -1
 
-    # Ball out of bounds
+    # Ball collisions with paddles for the second ball
+    if ball2_x - BALL_RADIUS <= PADDLE_WIDTH and paddle_a_y <= ball2_y <= paddle_a_y + PADDLE_HEIGHT:
+        ball2_velocity_x *= -1
+    elif ball2_x + BALL_RADIUS >= WINDOW_WIDTH - PADDLE_WIDTH and paddle_b_y <= ball2_y <= paddle_b_y + PADDLE_HEIGHT:
+        ball2_velocity_x *= -1
+
+    # Ball out of bounds for the first ball
     if ball_x - BALL_RADIUS <= 0:
         score_b += 1
         ball_x = WINDOW_WIDTH // 2
@@ -95,6 +115,18 @@ while running:
         ball_y = WINDOW_HEIGHT // 2
         ball_velocity_x *= -1
 
+    # Ball out of bounds for the second ball
+    if ball2_x - BALL_RADIUS <= 0:
+        score_b += 1
+        ball2_x = WINDOW_WIDTH // 2
+        ball2_y = WINDOW_HEIGHT // 2
+        ball2_velocity_x *= -1
+    elif ball2_x + BALL_RADIUS >= WINDOW_WIDTH:
+        score_a += 1
+        ball2_x = WINDOW_WIDTH // 2
+        ball2_y = WINDOW_HEIGHT // 2
+        ball2_velocity_x *= -1
+
     # Clear the window
     window.fill(BLACK)
 
@@ -102,8 +134,11 @@ while running:
     pygame.draw.rect(window, WHITE, pygame.Rect(0, paddle_a_y, PADDLE_WIDTH, PADDLE_HEIGHT))
     pygame.draw.rect(window, WHITE, pygame.Rect(WINDOW_WIDTH - PADDLE_WIDTH, paddle_b_y, PADDLE_WIDTH, PADDLE_HEIGHT))
 
-    # Draw ball
+    # Draw the first ball
     pygame.draw.circle(window, WHITE, (ball_x, ball_y), BALL_RADIUS)
+
+    # Draw the second ball
+    pygame.draw.circle(window, WHITE, (ball2_x, ball2_y), BALL_RADIUS)
 
     # Draw scores
     score_text = SCORE_FONT.render("Player A: {}  Player B: {}".format(score_a, score_b), True, WHITE)
