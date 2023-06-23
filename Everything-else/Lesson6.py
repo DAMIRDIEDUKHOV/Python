@@ -124,18 +124,126 @@
         #language = favorite_lang[name].title()
         #print(f"\t{name.title()}, I see you love {language}.")   
 
+#favorite_lang = {
+    #'damir': 'python',
+    #'yehor': 'scratch',
+    #'eleonora': 'c++',
+    #'daddy': 'ruby',
+    #'mommy': 'java'
+    #}
+
+
+#for name in sorted(favorite_lang.keys()):
+    #print(f"{name.title()}, thank you for programming.")
+
+#if 'brother' not in favorite_lang.keys():
+    #print("and brother please start coding more.!!")
+
+#favorite_lang = {
+    #'damir': 'python',
+    #'yehor': 'scratch',
+    #'eleonora': 'c++',
+    #'daddy': 'ruby',
+    #'mommy': 'java'
+    #}
+
+
+#print("The following programs are being used the most.")
+#for lang in set(favorite_lang.values()): # set() puts the dictionaries into ABC.
+    #print(lang.title())
+
+
+
+#rivers = {
+    #'nile': 'egypt',
+    #'missouri': 'USA',
+    #'yangtze': 'china'
+
+#}
+
+#for river, place in rivers.items():
+    #print(f"The {river.title()} is in {place.title()}.")
+
+
+#favorite_video_games = {
+    #'damir': 'rocket legue',
+    #'yehor': 'it_takes_two',
+    #'eleonora': 'call_of_duty',
+    #'daddy': 'tanks_of_trouble',
+    #'mommy': 'nothing'
+    #}
+
+#print("Before adding:")
+#for name, game in favorite_video_games.items():
+    #print(f"\nName: {name}")
+    #print(f"Game: {game}")
+
+#favorite_video_games['marko'] = 'fortnite'
+#favorite_video_games['cristo'] = 'FIFA'
+#favorite_video_games['jackson'] = 'roblox'
+
+#print("\nAfter adding:")
+#for name, game in favorite_video_games.items():
+    #print(f"\nName: {name}")
+    #print(f"Game: {game}")
+
+
+
+#alien1 = {'color': 'green', 'points': 5}
+#alien2 = {'color': 'purple', 'points': 10}
+#alien3 = {'color': 'red', 'points': 20}
+
+#alliens = [alien1, alien2, alien3]
+
+#for alien in alliens:
+    #print(alien)
+
+
+
+#alliens = []
+
+#for a_number in range(30):
+    #new_allien = {'color': 'green', 'points': 5, 'damage': 2.5}
+    #alliens.append(new_allien)
+
+#for allien in alliens[:3]:
+    #if allien['color'] == 'green':
+        #allien['color'] = 'red'
+        #allien['points'] = '10'
+        #allien['damage'] = '5'
+    #elif allien['color'] == 'yellow':
+        #allien['color'] = 'puprle'
+        #allien['points'] = '20'
+        #allien['damage'] = '10'
+
+#for alien in alliens[:5]:
+    #print(alien)
+#print('...')
+
+#print(f'\nThere are', len(alliens), ' alliens outside my house.')
+
+
+#pizza = {
+    #'crust': 'thick',
+    #'toppings': ['Cheese', 'Salami', 'Chiken', 'Pinaple', 'Parrmazon', 'Corn']
+#}
+
+#print(f"You order a {pizza['crust']} crust pizza"
+      #"with the following toppings:")
+
+#for t in pizza['toppings']:
+    #print(f"\t{t}")
+
+
 favorite_lang = {
-    'damir': 'python',
-    'yehor': 'scratch',
-    'eleonora': 'c++',
-    'daddy': 'ruby',
-    'mommy': 'java'
+    'damir': ['python', 'games'],
+    'yehor': ['scratch', 'music'],
+    'eleonora': ['c++', 'c'],
+    'daddy': ['ruby', 'cars'],
+    'mommy': ['java', 'flowers']
     }
 
-
-for name in sorted(favorite_lang.keys()):
-    print(f"{name.title()}, thank you for programming.")
-
-if 'brother' not in favorite_lang.keys():
-    print("and brother please start coding more.!!")
-
+for names, lang in favorite_lang.items():
+    print(f"{names.title()}'s favorite languages are:")
+    for langs in lang:
+        print(f"\t{langs}")
