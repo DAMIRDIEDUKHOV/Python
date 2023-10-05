@@ -1,73 +1,34 @@
-import random
+import numpy as np
+import matplotlib.pyplot as plt
 
-# Function to print the Tic-Tac-Toe board
-def print_board(board):
-    print("---------")
-    for i in range(3):
-        print("|", end=" ")
-        for j in range(3):
-            print(board[i][j], end=" ")
-        print("|")
-    print("---------")
+def create_sick_night_background(width, height):
+    x = np.linspace(0, 1, width)
+    y = np.linspace(0, 1, height)
+    X, Y = np.meshgrid(x, y)
 
-# Function to check if any player has won
-def check_win(board, player):
-    # Check rows
-    for i in range(3):
-        if all(cell == player for cell in board[i]):
-            return True
+    # Define colors for the gradient
+    color1 = [0, 0, 20]    # Dark blue
+    color2 = [0, 0, 0]     # Black
 
-    # Check columns
-    for j in range(3):
-        if all(board[i][j] == player for i in range(3)):
-            return True
+    # Create the gradient using the linear interpolation
+    R = np.interp(Y, [0, 1], [color1[0], color2[0]])
+    G = np.interp(Y, [0, 1], [color1[1], color2[1]])
+    B = np.interp(Y, [0, 1], [color1[2], color2[2]])
 
-    # Check diagonals
-    if board[0][0] == board[1][1] == board[2][2] == player:
-        return True
-    if board[0][2] == board[1][1] == board[2][0] == player:
-        return True
+    # Combine the colors to form the background
+    background = np.stack([R, G, B], axis=-1)
 
-    return False
+    return background
 
-# Function to make the bot's move
-def make_bot_move(board):
-    empty_cells = []
-    for i in range(3):
-        for j in range(3):
-            if board[i][j] == " ":
-                empty_cells.append((i, j))
-    move = random.choice(empty_cells)
-    board[move[0]][move[1]] = "O"
+if __name__ == "__main__":
+    # Set the width and height of the background
+    width = 800
+    height = 600
 
-# Function to play the game
-def play_game():
-    board = [[" " for _ in range(3)] for _ in range(3)]
-    player = "X"
+    # Create the background
+    background = create_sick_night_background(width, height)
 
-    while True:
-        print_board(board)
-
-        if player == "X":
-            row = int(input("Enter the row (0-2): "))
-            col = int(input("Enter the column (0-2): "))
-            if board[row][col] != " ":
-                print("Invalid move. Try again.")
-                continue
-            board[row][col] = "X"
-        else:
-            make_bot_move(board)
-
-        if check_win(board, player):
-            print_board(board)
-            print(player + " wins!")
-            break
-        elif all(board[i][j] != " " for i in range(3) for j in range(3)):
-            print_board(board)
-            print("It's a tie!")
-            break
-
-        player = "O" if player == "X" else "X"
-
-# Start the game
-play_game()
+    # Display the background using matplotlib
+    plt.imshow(background)
+    plt.axis('off')
+    plt.show()
