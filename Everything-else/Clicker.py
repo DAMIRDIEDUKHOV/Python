@@ -48,9 +48,25 @@ for i in range(4):
     cards.append(card)
     X += 150
 
+timer = 10
+txt_timer = Label(15, 15, 100, 50, LIGHT_BLUE)
+txt_timer.set_txt(30, 'timer', BLACK)
+
+num_timer = Label(15, 70, 100, 50, LIGHT_BLUE)
+num_timer.set_txt(30, str(timer), BLACK)
+
+score = 0
+txt_score = Label(600, 15, 100, 50, LIGHT_BLUE)
+txt_score.set_txt(30, 'score', BLACK)
+
+num_score = Label(600, 70, 100, 50, LIGHT_BLUE)
+num_score.set_txt(30, str(score), BLACK)
+
 count = 0
 window.fill(LIGHT_BLUE)
 game = True
+start_time = pygame.time.get_ticks()
+
 
 while game:
     for event in pygame.event.get():
@@ -64,9 +80,12 @@ while game:
                     if cards[i].rect.collidepoint(pos):
                         if i == num:
                             cards[i].change_color(GREEN)
+                            score += 1
                         else:
                             cards[i].change_color(RED)
+                            score -= 1
                         cards[i].show_sprite()
+                        num_score.set_txt(30, str(score), BLACK)
 
     if count == 0:
         num = randint(0, 3)
@@ -79,6 +98,29 @@ while game:
         count = 20
     else:
         count -= 1
+
+    current_time = pygame.time.get_ticks()
+    if current_time - start_time >= 1000:
+        timer -= 1
+        num_timer.set_txt(30, str(timer), BLACK)
+        start_time = current_time
+
+    txt_timer.draw_txt(0, 0)
+    num_timer.draw_txt(15, 0)
+    txt_score.draw_txt(0, 0)
+    num_score.draw_txt(30, 0)
+
+    if score == 5:
+        window.fill(GREEN)
+        win_card = Label(250, 275, 50, 50, GREEN)
+        win_card.set_txt(50, 'You win!!!', BLACK)
+        win_card.draw_txt(0, 0)
+    elif timer <= 0:
+        window.fill(RED)
+        lose_card = Label(205, 250, 50, 50, RED)
+        lose_card.set_txt(50, 'You lose ): !!!', BLACK)
+        lose_card.draw_txt(0, 0)
+
 
     clock.tick(FPS)
     pygame.display.update()
