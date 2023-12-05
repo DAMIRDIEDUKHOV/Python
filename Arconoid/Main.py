@@ -1,39 +1,8 @@
 import pygame
 import time
-import sys
+from time import sleep
 
 pygame.init()
-
-WIN_WIDTH = 800
-WIN_HEIGHT = 600
-FPS = 40
-BLACK = (0, 0, 0)
-
-window = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
-pygame.display.set_caption('Arconoid')
-clock = pygame.time.Clock()
-
-bg = pygame.image.load("Purple_backround.jpg")
-bg = pygame.transform.scale(bg, (WIN_WIDTH, WIN_HEIGHT))
-
-bg_win = pygame.image.load("you_win.jpg")
-bg_win = pygame.transform.scale(bg_win, (WIN_WIDTH, WIN_HEIGHT))
-
-bg_lose = pygame.image.load("you_lose.jpg")
-bg_lose = pygame.transform.scale(bg_lose, (WIN_WIDTH, WIN_HEIGHT))
-
-class GameSprites():
-    def __init__(self, x, y, width, height, file_name):
-        self.rect = pygame.Rect(x, y, width, height)
-        self.image = pygame.image.load(file_name)
-        self.image = pygame.transform.scale(self.image, (width, height))
-        self.creation_time = time.time()  # Store the creation time of the health bar
-
-    def show_sprite(self):
-        window.blit(self.image, (self.rect.x, self.rect.y))
-
-    def show(self):
-        window.blit(self.image, (self.rect.x, self.rect.y))
 
 WIN_WIDTH = 800
 WIN_HEIGHT = 600
@@ -68,11 +37,14 @@ class GameSprites():
     def show(self):
         window.blit(self.image, (self.rect.x, self.rect.y))
 
-platform = GameSprites(350, 500, 125, 100, "platform 2.png")
+platform = GameSprites(350, 500, 125, 100, "platform_2.png")
 ball = GameSprites(300, 300, 50, 50, "Ball.png")
-big_health_bar = GameSprites(180, 20, 175, 30, "full_health.png")
+big_health_bar = GameSprites(180, 20, 175, 30, "full_health2.png")
+half_health_bar = GameSprites(180, 20, 175, 30, "half_health.png")
+no_health_bar = GameSprites(180, 20, 175, 30, "no_health_bar.png")
 x = 0
 enemies = []
+count = len(enemies)
 health_bars = []
 
 for i in range(9):
@@ -93,26 +65,26 @@ for i in range(7):
     x += 90
 x = 0
 for i in range(9):
-    health_bar = GameSprites(x, 130, 70, 10, "full_health.png")
+    health_bar = GameSprites(x, 130, 70, 10, "full_health2.png")
     health_bars.append(health_bar)
     x += 90
 
 x = 37
 for i in range(8):
-    health_bar = GameSprites(x, 220, 70, 10, "full_health.png")
+    health_bar = GameSprites(x, 220, 70, 10, "full_health2.png")
     health_bars.append(health_bar)
     x += 90
 
 x = 75
 for i in range(7):
-    health_bar = GameSprites(x, 310, 70, 10, "full_health.png")
+    health_bar = GameSprites(x, 310, 70, 10, "full_health2.png")
     health_bars.append(health_bar)
     x += 90
 
 move_left = False
 move_right = False
-speed_x = 3
-speed_y = 3
+speed_x = 6
+speed_y = 6
 
 game = True
 level = 1
@@ -138,19 +110,22 @@ while game:
         platform.show_sprite()
         ball.show_sprite()
         big_health_bar.show_sprite()
+        if len(enemies) <= 12:
+            half_health_bar.show_sprite()
 
-        
         for health_bar in health_bars.copy():
             health_bar.show()
-
-
             if current_time - health_bar.creation_time >= 2:
                 health_bars.remove(health_bar)
 
         text = font.render('All Enemy Health:', True, (225, 225, 225))     
         text_rect = text.get_rect(center=(70, 30))
+        
+        text2 = font.render('Enemy Count: {}'.format(len(enemies)), True, (225, 225, 225))     
+        text_rect2 = text2.get_rect(center=(475, 30))
 
         window.blit(text, text_rect)
+        window.blit(text2, text_rect2)
 
         for enemy in enemies:
             enemy.show_sprite()
@@ -176,13 +151,104 @@ while game:
         if ball.rect.left <= 0:
             speed_x = -speed_x
 
-        if ball.rect.top > WIN_HEIGHT:
-            level = 3
+        for i in range(22):
+            if len(enemies) == 23:
+                name = GameSprites(180, 20, 175, 30, "23_enemies_left.png")
+                name.show_sprite()
+            
+            if len(enemies) == 22:
+                name = GameSprites(180, 20, 175, 30, "22_enemies_left.png")
+                name.show_sprite()
+            
+            if len(enemies) == 21:
+                name = GameSprites(180, 20, 175, 30, "21_enemies_left.png")
+                name.show_sprite()
 
-        if len(enemies) == 0:
-            level = 2
+            if len(enemies) == 20:
+                name = GameSprites(180, 20, 175, 30, "20_enemies_left.png")
+                name.show_sprite()
+
+            if len(enemies) == 19:
+                name = GameSprites(180, 20, 175, 30, "19_enemies_left.png")
+                name.show_sprite()
+
+            if len(enemies) == 18:
+                name = GameSprites(180, 20, 175, 30, "18_enemies_left.png")
+                name.show_sprite()
+
+            if len(enemies) == 17:
+                name = GameSprites(180, 20, 175, 30, "17_enemies_left.png")
+                name.show_sprite()
+
+            if len(enemies) == 16:
+                name = GameSprites(180, 20, 175, 30, "16_enemies_left.png")
+                name.show_sprite()
+
+            if len(enemies) == 15:
+                name = GameSprites(180, 20, 175, 30, "15_enemies_left.png")
+                name.show_sprite()
+
+            if len(enemies) == 14:
+                name = GameSprites(180, 20, 175, 30, "14_enemies_left.png")
+                name.show_sprite()
+
+            if len(enemies) == 13:
+                name = GameSprites(180, 20, 175, 30, "13_enemies_left.png")
+                name.show_sprite()
+
+            if len(enemies) == 12:
+                half_health_bar.show_sprite()
+
+            if len(enemies) == 11:
+                name = GameSprites(180, 20, 175, 30, "11_enemies_left.png")
+                name.show_sprite()
+
+            if len(enemies) == 10:
+                name = GameSprites(180, 20, 175, 30, "10_enemies_left.png")
+                name.show_sprite()
+
+            if len(enemies) == 9:
+                name = GameSprites(180, 20, 175, 30, "9_enemies_left.png")
+                name.show_sprite()
+
+            if len(enemies) == 8:
+                name = GameSprites(180, 20, 175, 30, "8_enemies_left.png")
+                name.show_sprite()
+
+            if len(enemies) == 7:
+                name = GameSprites(180, 20, 175, 30, "7_enemies_left.png")
+                name.show_sprite()
+
+            if len(enemies) == 6:
+                name = GameSprites(180, 20, 175, 30, "6_enemies_left.png")
+                name.show_sprite()
+
+            if len(enemies) == 5:
+                name = GameSprites(180, 20, 175, 30, "5_enemies_left.png")
+                name.show_sprite()
+
+            if len(enemies) == 4:
+                name = GameSprites(180, 20, 175, 30, "4_enemies_left.png")
+                name.show_sprite()
+
+            if len(enemies) == 3:
+                name = GameSprites(180, 20, 175, 30, "3_enemies_left.png")
+                name.show_sprite()
+
+            if len(enemies) == 2:
+                name = GameSprites(180, 20, 175, 30, "2_enemies_left.png")
+                name.show_sprite()
+                
+
+            if ball.rect.top > WIN_HEIGHT:
+                level = 3
+
+            if len(enemies) == 0:
+                no_health_bar.show_sprite()
+                level = 2
 
     elif level == 2:
+        sleep(2)
         window.blit(bg_win, (0, 0))
     elif level == 3:
         window.blit(bg_lose, (0, 0))
