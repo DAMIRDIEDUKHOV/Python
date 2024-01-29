@@ -98,13 +98,13 @@ while game:
         count = 20
     else:
         count -= 1
-
+    
     current_time = pygame.time.get_ticks()
     if current_time - start_time >= 1000:
         timer -= 1
         num_timer.set_txt(30, str(timer), BLACK)
         start_time = current_time
-
+    
     txt_timer.draw_txt(0, 0)
     num_timer.draw_txt(15, 0)
     txt_score.draw_txt(0, 0)

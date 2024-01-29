@@ -110,8 +110,6 @@ while game:
         platform.show_sprite()
         ball.show_sprite()
         big_health_bar.show_sprite()
-        if len(enemies) <= 12:
-            half_health_bar.show_sprite()
 
         for health_bar in health_bars.copy():
             health_bar.show()
@@ -138,10 +136,10 @@ while game:
 
         if move_right == True and platform.rect.right < WIN_WIDTH:
             platform.rect.x += 10
-
+        
         ball.rect.x += speed_x
         ball.rect.y += speed_y
-
+        
         if platform.rect.colliderect(ball.rect):
             speed_y = -speed_y
         if ball.rect.right >= WIN_WIDTH:
@@ -151,101 +149,101 @@ while game:
         if ball.rect.left <= 0:
             speed_x = -speed_x
 
-        for i in range(22):
-            if len(enemies) == 23:
-                name = GameSprites(180, 20, 175, 30, "23_enemies_left.png")
-                name.show_sprite()
+        #for i in range(22):
+        if len(enemies) == 23:
+            name = GameSprites(180, 20, 175, 30, "23_enemies_left.png")
+            name.show_sprite()
+        
+        elif len(enemies) == 22:
+            name = GameSprites(180, 20, 175, 30, "22_enemies_left.png")
+            name.show_sprite()
+        
+        elif len(enemies) == 21:
+            name = GameSprites(180, 20, 175, 30, "21_enemies_left.png")
+            name.show_sprite()
+
+        elif len(enemies) == 20:
+            name = GameSprites(180, 20, 175, 30, "20_enemies_left.png")
+            name.show_sprite()
+
+        elif len(enemies) == 19:
+            name = GameSprites(180, 20, 175, 30, "19_enemies_left.png")
+            name.show_sprite()
+
+        elif len(enemies) == 18:
+            name = GameSprites(180, 20, 175, 30, "18_enemies_left.png")
+            name.show_sprite()
+
+        elif len(enemies) == 17:
+            name = GameSprites(180, 20, 175, 30, "17_enemies_left.png")
+            name.show_sprite()
+
+        elif len(enemies) == 16:
+            name = GameSprites(180, 20, 175, 30, "16_enemies_left.png")
+            name.show_sprite()
+
+        elif len(enemies) == 15:
+            name = GameSprites(180, 20, 175, 30, "15_enemies_left.png")
+            name.show_sprite()
+
+        elif len(enemies) == 14:
+            name = GameSprites(180, 20, 175, 30, "14_enemies_left.png")
+            name.show_sprite()
+
+        elif len(enemies) == 13:
+            name = GameSprites(180, 20, 175, 30, "13_enemies_left.png")
+            name.show_sprite()
+
+        elif len(enemies) == 12:
+            half_health_bar.show_sprite()
+
+        elif len(enemies) == 11:
+            name = GameSprites(180, 20, 175, 30, "11_enemies_left.png")
+            name.show_sprite()
+
+        elif len(enemies) == 10:
+            name = GameSprites(180, 20, 175, 30, "10_enemies_left.png")
+            name.show_sprite()
+
+        elif len(enemies) == 9:
+            name = GameSprites(180, 20, 175, 30, "9_enemies_left.png")
+            name.show_sprite()
+
+        elif len(enemies) == 8:
+            name = GameSprites(180, 20, 175, 30, "8_enemies_left.png")
+            name.show_sprite()
+
+        elif len(enemies) == 7:
+            name = GameSprites(180, 20, 175, 30, "7_enemies_left.png")
+            name.show_sprite()
+
+        elif len(enemies) == 6:
+            name = GameSprites(180, 20, 175, 30, "6_enemies_left.png")
+            name.show_sprite()
+
+        elif len(enemies) == 5:
+            name = GameSprites(180, 20, 175, 30, "5_enemies_left.png")
+            name.show_sprite()
+
+        elif len(enemies) == 4:
+            name = GameSprites(180, 20, 175, 30, "4_enemies_left.png")
+            name.show_sprite()
+
+        elif len(enemies) == 3:
+            name = GameSprites(180, 20, 175, 30, "3_enemies_left.png")
+            name.show_sprite()
+
+        elif len(enemies) == 2:
+            name = GameSprites(180, 20, 175, 30, "2_enemies_left.png")
+            name.show_sprite()
             
-            if len(enemies) == 22:
-                name = GameSprites(180, 20, 175, 30, "22_enemies_left.png")
-                name.show_sprite()
-            
-            if len(enemies) == 21:
-                name = GameSprites(180, 20, 175, 30, "21_enemies_left.png")
-                name.show_sprite()
 
-            if len(enemies) == 20:
-                name = GameSprites(180, 20, 175, 30, "20_enemies_left.png")
-                name.show_sprite()
+        if ball.rect.top > WIN_HEIGHT:
+            level = 3
 
-            if len(enemies) == 19:
-                name = GameSprites(180, 20, 175, 30, "19_enemies_left.png")
-                name.show_sprite()
-
-            if len(enemies) == 18:
-                name = GameSprites(180, 20, 175, 30, "18_enemies_left.png")
-                name.show_sprite()
-
-            if len(enemies) == 17:
-                name = GameSprites(180, 20, 175, 30, "17_enemies_left.png")
-                name.show_sprite()
-
-            if len(enemies) == 16:
-                name = GameSprites(180, 20, 175, 30, "16_enemies_left.png")
-                name.show_sprite()
-
-            if len(enemies) == 15:
-                name = GameSprites(180, 20, 175, 30, "15_enemies_left.png")
-                name.show_sprite()
-
-            if len(enemies) == 14:
-                name = GameSprites(180, 20, 175, 30, "14_enemies_left.png")
-                name.show_sprite()
-
-            if len(enemies) == 13:
-                name = GameSprites(180, 20, 175, 30, "13_enemies_left.png")
-                name.show_sprite()
-
-            if len(enemies) == 12:
-                half_health_bar.show_sprite()
-
-            if len(enemies) == 11:
-                name = GameSprites(180, 20, 175, 30, "11_enemies_left.png")
-                name.show_sprite()
-
-            if len(enemies) == 10:
-                name = GameSprites(180, 20, 175, 30, "10_enemies_left.png")
-                name.show_sprite()
-
-            if len(enemies) == 9:
-                name = GameSprites(180, 20, 175, 30, "9_enemies_left.png")
-                name.show_sprite()
-
-            if len(enemies) == 8:
-                name = GameSprites(180, 20, 175, 30, "8_enemies_left.png")
-                name.show_sprite()
-
-            if len(enemies) == 7:
-                name = GameSprites(180, 20, 175, 30, "7_enemies_left.png")
-                name.show_sprite()
-
-            if len(enemies) == 6:
-                name = GameSprites(180, 20, 175, 30, "6_enemies_left.png")
-                name.show_sprite()
-
-            if len(enemies) == 5:
-                name = GameSprites(180, 20, 175, 30, "5_enemies_left.png")
-                name.show_sprite()
-
-            if len(enemies) == 4:
-                name = GameSprites(180, 20, 175, 30, "4_enemies_left.png")
-                name.show_sprite()
-
-            if len(enemies) == 3:
-                name = GameSprites(180, 20, 175, 30, "3_enemies_left.png")
-                name.show_sprite()
-
-            if len(enemies) == 2:
-                name = GameSprites(180, 20, 175, 30, "2_enemies_left.png")
-                name.show_sprite()
-                
-
-            if ball.rect.top > WIN_HEIGHT:
-                level = 3
-
-            if len(enemies) == 0:
-                no_health_bar.show_sprite()
-                level = 2
+        if len(enemies) == 0:
+            no_health_bar.show_sprite()
+            level = 2
 
     elif level == 2:
         sleep(2)
