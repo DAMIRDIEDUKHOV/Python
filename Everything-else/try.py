@@ -1,3 +1,2 @@
-for i in range(1,5):
-    name = str(i) + "test"
-    print (name)
+my_students =['Anderson', 'Holmes', 'Johnson', 'Smith', 'Watson']
+print(my_students)
