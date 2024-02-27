@@ -47,10 +47,23 @@ while action != '0':
             if new_sport not in friends[friend_name]['sports']:
                 friends[friend_name]['sports'].append(new_sport)
             else:
-                print()
+                print("The sport is already in.")
+    elif action == '5':
+        friend_name = input("What is you're friends name?")
+
+        if friend_name in friends:
+            del_sport = input("What spor tdo you want to delete?")
+            if del_sport in friends[friend_name]['sports']:
+                friends[friend_name]['sports'].remove(del_sport)
+            else:
+                print("Your friend doesn't play that sport.")
+    elif action == '6':
+        for friend, description in friends:
+            print(friend, ":")
+            for key, value in description['John'].items():
+                print("\n-", key, ":", value, "\t")
+            for key, value in friends['Polly'].items():
+                print("\n-", key, ":", value, "\t")
+        
 
     action = input("1 - add new friend, 2 - del friend, 3 - change age, 4 - add new sport, 5 - del sport, 6 - show all friends, 7 - show all info, 8-stop")
-
-
-
-
