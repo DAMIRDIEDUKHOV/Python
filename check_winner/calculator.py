@@ -221,6 +221,11 @@ def label_minus_add_divide_multiply_sqrt_squared():
 
     label.setText(str(total))
 
+def delete():
+    current_text = label.text()
+    if current_text:
+        label.setText(current_text[:-1])
+        
 btn_1.clicked.connect(clicker1)
 btn_2.clicked.connect(clicker2)
 btn_3.clicked.connect(clicker3)
@@ -240,7 +245,7 @@ btn_sqrt.clicked.connect(clicker_sqrt)
 btn_squared.clicked.connect(clicker_squared)
 btn_ac.clicked.connect(clear_all)
 btn_equal.clicked.connect(label_minus_add_divide_multiply_sqrt_squared)
-
+btn_delete.clicked.connect(delete)
 
 win.show()
 app.exec_()
