@@ -213,11 +213,12 @@ def label_minus_add_divide_multiply_sqrt_squared():
         for num in numbers[1:]:
             total = total ** float(num)
 
-    #elif ' √ ' in expression:
-        #numbers = expression.split(num)
-        #total = float(numbers[0])
-        #for num in numbers[1:]:
-            #total = total  float(num)
+    elif ' √ ' in expression:
+        if len(numbers) > 0:
+            numbers = expression.split(' √ ')
+            total = float(numbers[0])
+            for num in numbers[1:]:
+                total = math.sqrt(float(num))
 
     label.setText(str(total))
 
