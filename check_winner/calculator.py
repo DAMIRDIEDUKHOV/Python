@@ -84,6 +84,7 @@ btn_squared.setProperty("level", "buttons")
 btn_sqrt.setProperty("level", "buttons")
 
 #Move around widgets
+
 l1 = QHBoxLayout()
 l1.addWidget(btn_ac)
 l1.addWidget(btn_delete)
@@ -114,6 +115,7 @@ l5.addWidget(btn_0)
 l5.addWidget(btn_squared)
 l5.addWidget(btn_equal)
 
+
 l6 = QVBoxLayout()
 l6.addWidget(label)
 l6.addLayout(l1)
@@ -129,6 +131,7 @@ win.setLayout(l6)
 def clicker1():
     label.setText(label.text()+"1")
 
+
 def clicker2():
     label.setText(label.text()+"2")
 
@@ -143,7 +146,7 @@ def clicker5():
 
 def clicker6():
     label.setText(label.text()+"6")
-
+   
 def clicker7():
     label.setText(label.text()+"7")
 
@@ -158,7 +161,7 @@ def clicker0():
 
 def clicker_point():
     label.setText(label.text()+".")
-    
+
 def clicker_plus():
     label.setText(label.text()+" + ")
 
@@ -219,6 +222,7 @@ def label_minus_add_divide_multiply_sqrt_squared():
             total = float(numbers[0])
             for num in numbers[1:]:
                 total = math.sqrt(float(num))
+    
 
     label.setText(str(total))
 
@@ -226,6 +230,10 @@ def delete():
     current_text = label.text()
     if current_text:
         label.setText(current_text[:-1])
+
+
+
+    
         
 btn_1.clicked.connect(clicker1)
 btn_2.clicked.connect(clicker2)
